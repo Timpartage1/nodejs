@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const User = require('./models/User');
+const User = require('./models/user');
 //rendering views 
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
