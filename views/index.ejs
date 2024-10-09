@@ -1,0 +1,15 @@
+<%- include('./partials/head')%>
+<body>
+This is EJS 
+
+<%
+blog.forEach(blog=>{
+%>
+<h3><%=blog.title%></h3>
+<p><%=blog.content%></p>
+<%
+})
+%>
+
+</body>
+</html>
