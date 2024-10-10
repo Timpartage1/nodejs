@@ -9,19 +9,20 @@
         body {
             background-color: #121212;
             color: #e0e0e0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Updated font */
             margin: 0;
+            line-height: 1.6;
         }
         header {
             padding: 60px 0;
             text-align: center;
         }
         header h1 {
-            font-size: 3rem;
+            font-size: 4rem; /* Increased font size */
             margin: 0;
         }
         header p {
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* Increased font size */
         }
         .section {
             padding: 60px 20px;
@@ -38,11 +39,10 @@
             text-align: center;
             background-color: #0a0a0d;
         }
-        .about-image {
+        .about-carousel img {
             width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-            margin-top: 20px;
+            max-height: 400px; /* Set max height for the carousel images */
+            object-fit: cover;
         }
     </style>
 </head>
@@ -75,7 +75,29 @@
 <div class="container section" id="about">
     <h2>About Me</h2>
     <h5>Computer Scientist & IT Specialist</h5>
-    <img src="/tim.JPG" alt="Timothee Kamate Katende" class="about-image">
+    
+    <div id="aboutCarousel" class="carousel slide about-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/tim.JPG" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/tim2.JPG" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/tim.JPG" alt="Image 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
     <p>I am a dedicated computer scientist with a solid background in IT technical support and software development. I thrive on solving complex problems and transforming ideas into reality through code.</p>
 </div>
 
