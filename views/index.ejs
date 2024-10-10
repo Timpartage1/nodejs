@@ -1,105 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Timothee Kamate Katende Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="/style.css"/>
-  <style>
-    body {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-    .hero-image {
-        height: 400px;
-        background-image: url('tim.JPG');
-        background-size: cover;
-        background-position: center;
-    }
-    .project-image {
-        height: 400px;
-        background-image: url('timb.JPG');
-        background-size: cover;
-        background-position: center;
-    }
-    .bg-primary-custom {
-      background-color: #1a1a2e;
-    }
-    .bg-dark-custom {
-      background-color: #0a0a0d;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timothee Kamate Katende Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+        header {
+            padding: 60px 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.5rem;
+        }
+        .section {
+            padding: 60px 20px;
+        }
+        .project {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px 0;
+            background-color: #1a1a2e;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #0a0a0d;
+        }
+    </style>
 </head>
 <body>
 
-<div class="p-5 bg-primary-custom text-white text-center">
-  <h1>Kamate Katende Timothee</h1>
-  <p>A passionate computer scientist exploring the realms of technology.</p>
-</div>
+<header>
+    <h1>Timothee Kamate Katende</h1>
+    <p>A passionate computer scientist exploring the realms of technology.</p>
+</header>
 
-<nav class="navbar navbar-expand-sm bg-dark-custom navbar-dark">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="#about">About Me</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#cv">CV</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#projects">Sample Works</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#contact">Contact Me</a>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About Me</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#cv">CV</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#contact">Contact Me</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
-<div class="container mt-5">
-  <div class="row" id="about">
-    <div class="col-sm-4">
-      <h2>About Me</h2>
-      <h5>Computer Scientist & IT Specialist</h5>
-      <div class="project-image mb-3">Project Image</div>
-      <p>I am a dedicated computer scientist with a solid background in IT technical support and software development. I thrive on solving complex problems and transforming ideas into reality through code.</p>
-    </div>
-    <div class="col-sm-8">
-      <h2>LEIT MOTIV</h2>
-      <h5>We are writing a history we do not control, Dec 7, 2020</h5>
-      <div class="hero-image mb-3">Me in 2020</div>
-      <p>I believe in seizing every opportunity as if it were our only chance. In a world of uncertainties, what truly matters is how we navigate our lives and the impact we leave behind.</p>
-      <p>With experience in troubleshooting technical issues and developing innovative software solutions, I combine analytical skills with creativity to enhance user experiences and streamline operations.</p>
-    </div>
-  </div>
-  
-  <div class="row mt-5" id="projects">
-    <div class="col-sm-12">
-      <h3>Some of My Projects</h3>
-      <p>Here are a few projects that showcase my skills and experience:</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Project 1: Technical Support Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Project 2: Inventory Management System</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Project 3: Custom Software Solutions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled Link</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+<div class="container section" id="about">
+    <h2>About Me</h2>
+    <h5>Computer Scientist & IT Specialist</h5>
+    <p>I am a dedicated computer scientist with a solid background in IT technical support and software development. I thrive on solving complex problems and transforming ideas into reality through code.</p>
 </div>
 
-<footer class="mt-5 p-4 bg-dark-custom text-white text-center">
-  <p>&copy; 2024 Timothee Kamate Katende</p>
+<div class="container section" id="motivation">
+    <h2>LEIT MOTIV</h2>
+    <h5>We are writing a history we do not control, Dec 7, 2020</h5>
+    <p>I believe in seizing every opportunity as if it were our only chance. In a world of uncertainties, what truly matters is how we navigate our lives and the impact we leave behind.</p>
+    <p>With experience in troubleshooting technical issues and developing innovative software solutions, I combine analytical skills with creativity to enhance user experiences and streamline operations.</p>
+</div>
+
+<div class="container section" id="projects">
+    <h2>Some of My Projects</h2>
+    <p>Here are a few projects that showcase my skills and experience:</p>
+    <div class="project">
+        <h5>Project 1: Technical Support Dashboard</h5>
+        <p>Description of the project goes here.</p>
+    </div>
+    <div class="project">
+        <h5>Project 2: Inventory Management System</h5>
+        <p>Description of the project goes here.</p>
+    </div>
+    <div class="project">
+        <h5>Project 3: Custom Software Solutions</h5>
+        <p>Description of the project goes here.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Timothee Kamate Katende</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
