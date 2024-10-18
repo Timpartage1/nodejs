@@ -14,7 +14,7 @@ const dbUri = "mongodb+srv://root:8466%40tim@timongo.ydcds.mongodb.net/" +
 moongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Database connected succesfully");
-        app.listen(3000);
+        app.listen(8080);
     }).catch((err) => {
         console.log(err);
     });
