@@ -19,7 +19,7 @@ moongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(err);
     });
 
-const Users = new User({
+const Users = new user({
     firstname: "Timothee",
     lastname: "Katende",
     age: "24",
