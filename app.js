@@ -59,6 +59,6 @@ app.get('/about-us', (req, res) => {
 
 app.use((req, res) => {
 
-    res.sendFile('./error.html', { root: __dirname });
+    res.sendFile('error.html', { root: __dirname });
 
 });
