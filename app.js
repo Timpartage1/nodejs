@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 //rendering views 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(express.urlencoded({extended:true}))
 
 //db
 const moongoose = require('mongoose');
@@ -43,26 +44,94 @@ const transporter = nodemailer.createTransport({
 
 // Function to send emails
 async function sendEmail(customerDetails) {
-    const { name, email, message } = customerDetails;
+    const { name, email, subject, message } = customerDetails;
 
     try {
         // Send email to admin@picasf.com
         await transporter.sendMail({
             from: '"PiCASF Contact Form" <admin@picasf.com>', // Sender address
             to: 'admin@picasf.com', // Admin email
-            subject: `New Customer Inquiry from ${name}`, // Email subject
+            subject: `New Customer Inquiry from ${subject}`, // Email subject
             text: `You received a new inquiry:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`, // Email body (text)
         });
 
         console.log('Email sent to admin successfully.');
 
         // Send feedback email to the customer
-        await transporter.sendMail({
-            from: '"PiCASF Support" <admin@picasf.com>', // Sender address
-            to: email, // Customer's email
-            subject: 'We Received Your Inquiry!', // Email subject
-            text: `Hi ${name},\n\nThank you for reaching out! We have received your message and will respond soon.\n\nYour Message:\n"${message}"\n\nBest regards,\nPiCASF Team`, // Email body (text)
-        });
+        // await transporter.sendMail({
+        //     from: '"PiCASF Support" <admin@picasf.com>', // Sender address
+        //     to: email, // Customer's email
+        //     subject: 'We Received Your Inquiry!', // Email subject
+        //     text: `Hi ${name},\n\nThank you for reaching out! We have received your message and will respond soon.\n\nYour Message:\n"${message}"\n\nBest regards,\nPiCASF Team`, // Email body (text)
+        // });
+
+        // Send feedback email to the customer
+await transporter.sendMail({
+    from: '"PiCASF Support" <admin@picasf.com>', // Sender address
+    to: email, // Customer's email
+    subject: 'We Received Your Inquiry!', // Email subject
+    html: `
+        <html>
+            <head>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                        color: #333;
+                    }
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        background-color: #ffffff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    }
+                    .header {
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .header img {
+                        max-width: 150px;
+                    }
+                    .content {
+                        font-size: 16px;
+                        line-height: 1.5;
+                    }
+                    .footer {
+                        margin-top: 20px;
+                        text-align: center;
+                        font-size: 14px;
+                        color: #777;
+                    }
+                    .footer a {
+                        color: #007bff;
+                        text-decoration: none;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <img src="picasf.JPG" alt="PiCASF Logo">
+                    </div>
+                    <div class="content">
+                        <p>Hi ${name},</p>
+                        <p>Thank you for reaching out! We have received your message and will respond soon.</p>
+                        <p><strong>Your Message:</strong></p>
+                        <blockquote style="font-style: italic; color: #555;">"${message}"</blockquote>
+                        <p>Best regards,<br>PiCASF Team</p>
+                    </div>
+                    <div class="footer">
+                        <p>&copy; 2024 PiCASF. All rights reserved.</p>
+                    </div>
+                </div>
+            </body>
+        </html>`, // Email body (HTML format)
+});
+
 
         console.log('Feedback email sent to the customer successfully.');
     } catch (error) {
@@ -72,9 +141,10 @@ async function sendEmail(customerDetails) {
 
 // Example usage
 const customerDetails = {
-    name: "timothee",
-    email: 'timothee.kamate@support.carahsoft.com',
-    message: 'I am interested in your services. Please contact me.',
+    name: req.body.name,
+    email: req.body.email,
+    subject: req.body.subject,
+    message: req.body.message,
 };
 
 // Execute the email sending function
