@@ -152,7 +152,7 @@ await transporter.sendMail({
                         <blockquote class="quote">"${message}"</blockquote>
                         <p>We appreciate your patience.</p>
                         <p>Best regards,<br><strong>The PiCASF Team</strong></p>
-                        <a href="http://picasf.com" class="cta">Visit Our Website</a>
+                        <a href="https://picasf.com" class="cta">Visit Our Website</a>
                     </div>
                     <div class="footer">
                         <p>&copy; 2024 PiCASF. All rights reserved.</p>
