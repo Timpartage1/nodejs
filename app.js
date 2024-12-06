@@ -67,7 +67,7 @@ async function sendEmail(customerDetails) {
 
         // Send feedback email to the customer
 await transporter.sendMail({
-    from: '"PiCASF Support" <admin@picasf.com>', // Sender address
+    from: '"PICASF " <admin@picasf.com>', // Sender address
     to: email, // Customer's email
     subject: 'We Received Your Inquiry!', // Email subject
     html: `
@@ -76,7 +76,7 @@ await transporter.sendMail({
                 <style>
                     body {
                         font-family: Arial, sans-serif;
-                        background-color: #f4f4f9;
+                        background-color: #999999;
                         margin: 0;
                         padding: 0;
                         color: #333;
@@ -115,7 +115,7 @@ await transporter.sendMail({
             <body>
                 <div class="container">
                     <div class="header">
-                        <img src="https://picasf.com/picasf.JPG" alt="PiCASF Logo">
+                        <img src="https://picasf.com/images/picasf.JPG" alt="PiCASF Logo">
                     </div>
                     <div class="content">
                         <p>Hi ${name},</p>
@@ -125,7 +125,7 @@ await transporter.sendMail({
                         <p>Best regards,<br><strong>PICASF Team</strong></p>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2024 PiCASF. All rights reserved.</p>
+                        <p>&copy; 2024 PICASF. All rights reserved.</p>
                     </div>
                 </div>
             </body>
