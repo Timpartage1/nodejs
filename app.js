@@ -11,14 +11,14 @@ const moongoose = require('mongoose');
 const dbUri = "mongodb+srv://root:8466%40tim@timongo.ydcds.mongodb.net/" +
     "?retryWrites=true&w=majority&appName=supermarket";
 
-//149.82.54.21/32,15.114.158.56
-moongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("Database connected succesfully");
+// //149.82.54.21/32,15.114.158.56
+// moongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => {
+//         console.log("Database connected succesfully");
        
-    }).catch((err) => {
-        console.log(err);
-    });
+//     }).catch((err) => {
+//         console.log(err);
+//     });
 
     app.listen(8080);
 
@@ -72,7 +72,7 @@ async function sendEmail(customerDetails) {
 
 // Example usage
 const customerDetails = {
-    name: "timothee".,
+    name: "timothee",
     email: 'timothee.kamate@support.carahsoft.com',
     message: 'I am interested in your services. Please contact me.',
 };
