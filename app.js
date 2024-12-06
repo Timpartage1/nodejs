@@ -115,14 +115,14 @@ await transporter.sendMail({
             <body>
                 <div class="container">
                     <div class="header">
-                        <img src="picasf.JPG" alt="PiCASF Logo">
+                        <img src="https://picasf.com/picasf.JPG" alt="PiCASF Logo">
                     </div>
                     <div class="content">
                         <p>Hi ${name},</p>
-                        <p>Thank you for reaching out! We have received your message and will respond soon.</p>
+                        <p>Thank you for reaching out!</p><p> We have received your message and will respond soon.</p><br>
                         <p><strong>Your Message:</strong></p>
                         <blockquote style="font-style: italic; color: #555;">"${message}"</blockquote>
-                        <p>Best regards,<br>PiCASF Team</p>
+                        <p>Best regards,<br><strong>PICASF Team</strong></p>
                     </div>
                     <div class="footer">
                         <p>&copy; 2024 PiCASF. All rights reserved.</p>
