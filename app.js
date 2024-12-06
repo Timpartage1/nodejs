@@ -65,9 +65,9 @@ async function sendEmail(customerDetails) {
         //     text: `Hi ${name},\n\nThank you for reaching out! We have received your message and will respond soon.\n\nYour Message:\n"${message}"\n\nBest regards,\nPiCASF Team`, // Email body (text)
         // });
 
-        // Send feedback email to the customer
+       // Send feedback email to the customer
 await transporter.sendMail({
-    from: '"PICASF " <admin@picasf.com>', // Sender address
+    from: '"PiCASF" <admin@picasf.com>', // Sender address
     to: email, // Customer's email
     subject: 'We Received Your Inquiry!', // Email subject
     html: `
@@ -75,40 +75,68 @@ await transporter.sendMail({
             <head>
                 <style>
                     body {
-                        font-family: Arial, sans-serif;
-                        background-color: #999999;
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        background-color: #f4f7fb;
                         margin: 0;
                         padding: 0;
-                        color: #333;
+                        color: #4d4d4d;
                     }
                     .container {
                         max-width: 600px;
-                        margin: 0 auto;
+                        margin: 20px auto;
                         background-color: #ffffff;
-                        padding: 20px;
-                        border-radius: 8px;
-                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                        padding: 30px;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
                     }
                     .header {
                         text-align: center;
-                        margin-bottom: 20px;
+                        margin-bottom: 30px;
                     }
                     .header img {
-                        max-width: 150px;
+                        max-width: 180px;
+                        height: auto;
                     }
                     .content {
                         font-size: 16px;
-                        line-height: 1.5;
+                        line-height: 1.6;
+                        margin-bottom: 20px;
+                    }
+                    .content p {
+                        margin-bottom: 15px;
+                    }
+                    .quote {
+                        font-style: italic;
+                        color: #555;
+                        border-left: 4px solid #007bff;
+                        padding-left: 15px;
+                        margin: 20px 0;
                     }
                     .footer {
-                        margin-top: 20px;
+                        margin-top: 40px;
                         text-align: center;
                         font-size: 14px;
-                        color: #777;
+                        color: #999;
                     }
                     .footer a {
                         color: #007bff;
                         text-decoration: none;
+                    }
+                    .footer a:hover {
+                        text-decoration: underline;
+                    }
+                    .cta {
+                        display: inline-block;
+                        margin-top: 20px;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                    }
+                    .cta:hover {
+                        background-color: #0056b3;
                     }
                 </style>
             </head>
@@ -119,13 +147,16 @@ await transporter.sendMail({
                     </div>
                     <div class="content">
                         <p>Hi ${name},</p>
-                        <p>Thank you for reaching out!</p><p> We have received your message and will respond soon.</p><br>
+                        <p>Thank you for reaching out to PiCASF! We have received your inquiry and will respond as soon as possible.</p>
                         <p><strong>Your Message:</strong></p>
-                        <blockquote style="font-style: italic; color: #555;">"${message}"</blockquote>
-                        <p>Best regards,<br><strong>PICASF Team</strong></p>
+                        <blockquote class="quote">"${message}"</blockquote>
+                        <p>We appreciate your patience.</p>
+                        <p>Best regards,<br><strong>The PiCASF Team</strong></p>
+                        <a href="http://picasf.com" class="cta">Visit Our Website</a>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2024 PICASF. All rights reserved.</p>
+                        <p>&copy; 2024 PiCASF. All rights reserved.</p>
+                        <p>PiCASF, Kigali, Rwanda | <a href="mailto:admin@picasf.com">admin@picasf.com</a></p>
                     </div>
                 </div>
             </body>
