@@ -29,7 +29,13 @@ app.get('/', (req, res) => {
 });
 
 
+
+
+
+
 app.post('/contact', async (req, res) => {
+    const { name, email, subject, message } = req.body;
+
     const transporter = nodemailer.createTransport({
         host: 'smtp.zoho.com',
         port: 465,
@@ -40,37 +46,45 @@ app.post('/contact', async (req, res) => {
         },
     });
 
-    const { name, email, subject, message } = req.body;
-
     try {
-        // Render EJS template to HTML
-        const emailContent = await ejs.renderFile(
-            path.join(__dirname, 'views', 'email-template.ejs'),
-            { name, message }
-        );
-
         // Send email to admin
         await transporter.sendMail({
             from: '"PiCASF Contact Form" <admin@picasf.com>',
             to: 'admin@picasf.com',
-            subject: `New Inquiry from ${subject}`,
-            text: `You received a new inquiry:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
+            subject: `New Customer Inquiry from ${subject}`,
+            text: `You received a new inquiry:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
         });
 
-        // Send email to the customer
+        console.log('Email sent to admin successfully.');
+
+        // Use EJS to render HTML email content
+        const emailHtml = await ejs.renderFile(path.join(__dirname, 'views/contact-email.ejs'), { name, message });
+
+        // Send feedback email to customer
         await transporter.sendMail({
             from: '"PiCASF" <admin@picasf.com>',
             to: email,
             subject: 'We Received Your Inquiry!',
-            html: emailContent,
+            html: emailHtml,
         });
 
-        res.status(200).json({ success: true, message: 'Emails sent successfully!' });
+        console.log('Feedback email sent to the customer successfully.');
+        res.status(200).json({ success: true, message: 'Email sent successfully!' });
     } catch (error) {
-        console.error('Error sending emails:', error);
-        res.status(500).json({ success: false, message: 'Failed to send emails. Please try again later.' });
+        console.error('Error sending emails:', error.message);
+        console.error(error.stack);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to send emails. Please try again later.',
+            error: error.message,
+        });
     }
 });
+
+
+
+
+
 
 app.get('/cookie-policy',(req, res) => {
     res.render('cookie-policy');

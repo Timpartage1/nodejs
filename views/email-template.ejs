@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- views/contact-email.ejs -->
 <html>
 <head>
     <style>
@@ -30,10 +30,41 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
+        .content p {
+            margin-bottom: 15px;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
         .footer {
+            margin-top: 40px;
             text-align: center;
             font-size: 14px;
             color: #999;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .cta:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -45,12 +76,15 @@
         <div class="content">
             <p>Hi <%= name %>,</p>
             <p>Thank you for reaching out to PiCASF! We have received your inquiry and will respond as soon as possible.</p>
-            <blockquote>"<%= message %>"</blockquote>
-            <p>Best regards,</p>
-            <p><strong>The PiCASF Team</strong></p>
+            <p><strong>Your Message:</strong></p>
+            <blockquote class="quote"><%= message %></blockquote>
+            <p>We appreciate your patience.</p>
+            <p>Best regards,<br><strong>The PiCASF Team</strong></p>
+            <a href="https://picasf.com" class="cta">Visit Our Website</a>
         </div>
         <div class="footer">
-            &copy; 2024 PiCASF. All rights reserved.
+            <p>&copy; 2024 PiCASF. All rights reserved.</p>
+            <p>PiCASF, Kigali, Rwanda | <a href="mailto:admin@picasf.com">admin@picasf.com</a></p>
         </div>
     </div>
 </body>
