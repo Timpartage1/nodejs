@@ -59,7 +59,7 @@ app.post('/contact', async (req, res) => {
         console.log('Email sent to admin successfully.');
 
         // Use EJS to render HTML email content
-        const emailHtml = await ejs.renderFile(path.join(__dirname, 'views/contact-email.ejs'), { name, message });
+        const emailHtml = await ejs.renderFile(path.join(__dirname, 'views/email-template.ejs'), { name, message });
 
         // Send feedback email to customer
         await transporter.sendMail({
