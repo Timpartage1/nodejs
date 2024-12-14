@@ -43,45 +43,38 @@ app.post('/contact', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     try {
+        // Render EJS template to HTML
+        const emailContent = await ejs.renderFile(
+            path.join(__dirname, 'views', 'email-template.ejs'),
+            { name, message }
+        );
+
         // Send email to admin
         await transporter.sendMail({
             from: '"PiCASF Contact Form" <admin@picasf.com>',
             to: 'admin@picasf.com',
-            subject: `New Customer Inquiry from ${subject}`,
-            text: `You received a new inquiry:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+            subject: `New Inquiry from ${subject}`,
+            text: `You received a new inquiry:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
         });
 
-        // Send feedback email to the customer
+        // Send email to the customer
         await transporter.sendMail({
             from: '"PiCASF" <admin@picasf.com>',
             to: email,
             subject: 'We Received Your Inquiry!',
-            html: `
-                <html>
-                    <body>
-                        <p>Hi ${name},</p>
-                        <p>Thank you for reaching out to PiCASF! We have received your inquiry and will respond as soon as possible.</p>
-                        <p><strong>Your Message:</strong></p>
-                        <blockquote>"${message}"</blockquote>
-                        <p>Best regards,<br>The PiCASF Team</p>
-                    </body>
-                </html>`,
+            html: emailContent,
         });
 
-        // Respond with success
-        res.status(200).json({ success: true, message: 'Emails sent successfully.' });
+        res.status(200).json({ success: true, message: 'Emails sent successfully!' });
     } catch (error) {
         console.error('Error sending emails:', error);
-
-        // Respond with error
         res.status(500).json({ success: false, message: 'Failed to send emails. Please try again later.' });
     }
 });
 
-
-
-
-
+app.get('/cookie-policy',(req, res) => {
+    res.render('cookie-policy');
+})
 
 app.use((req, res) => {
 
