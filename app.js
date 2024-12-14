@@ -28,160 +28,55 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.post('/contact',(req,res)=>{
-    
 
-// Configure Zoho SMTP transporter
-const transporter = nodemailer.createTransport({
-    host: 'smtp.zoho.com',
-    port: 465, // Use 465 for SSL/TLS
-    secure: true, // SSL/TLS connection
-    auth: {
-        user: 'admin@picasf.com', // Your Zoho Mail email address
-        pass: '8466@timAmen', // Your Zoho Mail password or App Password
-    },
-});
+app.post('/contact', async (req, res) => {
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.zoho.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'admin@picasf.com',
+            pass: '8466@timAmen',
+        },
+    });
 
-// Function to send emails
-async function sendEmail(customerDetails) {
-    const { name, email, subject, message } = customerDetails;
+    const { name, email, subject, message } = req.body;
 
     try {
-        // Send email to admin@picasf.com
+        // Send email to admin
         await transporter.sendMail({
-            from: '"PiCASF Contact Form" <admin@picasf.com>', // Sender address
-            to: 'admin@picasf.com', // Admin email
-            subject: `New Customer Inquiry from ${subject}`, // Email subject
-            text: `You received a new inquiry:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`, // Email body (text)
+            from: '"PiCASF Contact Form" <admin@picasf.com>',
+            to: 'admin@picasf.com',
+            subject: `New Customer Inquiry from ${subject}`,
+            text: `You received a new inquiry:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
         });
 
-        console.log('Email sent to admin successfully.');
-
         // Send feedback email to the customer
-        // await transporter.sendMail({
-        //     from: '"PiCASF Support" <admin@picasf.com>', // Sender address
-        //     to: email, // Customer's email
-        //     subject: 'We Received Your Inquiry!', // Email subject
-        //     text: `Hi ${name},\n\nThank you for reaching out! We have received your message and will respond soon.\n\nYour Message:\n"${message}"\n\nBest regards,\nPiCASF Team`, // Email body (text)
-        // });
-
-       // Send feedback email to the customer
-await transporter.sendMail({
-    from: '"PiCASF" <admin@picasf.com>', // Sender address
-    to: email, // Customer's email
-    subject: 'We Received Your Inquiry!', // Email subject
-    html: `
-        <html>
-            <head>
-                <style>
-                    body {
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        background-color: #f4f7fb;
-                        margin: 0;
-                        padding: 0;
-                        color: #4d4d4d;
-                    }
-                    .container {
-                        max-width: 600px;
-                        margin: 20px auto;
-                        background-color: #ffffff;
-                        padding: 30px;
-                        border-radius: 10px;
-                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                    }
-                    .header {
-                        text-align: center;
-                        margin-bottom: 30px;
-                    }
-                    .header img {
-                        max-width: 180px;
-                        height: auto;
-                    }
-                    .content {
-                        font-size: 16px;
-                        line-height: 1.6;
-                        margin-bottom: 20px;
-                    }
-                    .content p {
-                        margin-bottom: 15px;
-                    }
-                    .quote {
-                        font-style: italic;
-                        color: #555;
-                        border-left: 4px solid #007bff;
-                        padding-left: 15px;
-                        margin: 20px 0;
-                    }
-                    .footer {
-                        margin-top: 40px;
-                        text-align: center;
-                        font-size: 14px;
-                        color: #999;
-                    }
-                    .footer a {
-                        color: #007bff;
-                        text-decoration: none;
-                    }
-                    .footer a:hover {
-                        text-decoration: underline;
-                    }
-                    .cta {
-                        display: inline-block;
-                        margin-top: 20px;
-                        padding: 10px 20px;
-                        background-color: #007bff;
-                        color: #ffffff;
-                        text-decoration: none;
-                        border-radius: 5px;
-                        font-weight: bold;
-                    }
-                    .cta:hover {
-                        background-color: #0056b3;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="container">
-                    <div class="header">
-                        <img src="https://picasf.com/images/picasf.JPG" alt="PiCASF Logo">
-                    </div>
-                    <div class="content">
+        await transporter.sendMail({
+            from: '"PiCASF" <admin@picasf.com>',
+            to: email,
+            subject: 'We Received Your Inquiry!',
+            html: `
+                <html>
+                    <body>
                         <p>Hi ${name},</p>
                         <p>Thank you for reaching out to PiCASF! We have received your inquiry and will respond as soon as possible.</p>
                         <p><strong>Your Message:</strong></p>
-                        <blockquote class="quote">"${message}"</blockquote>
-                        <p>We appreciate your patience.</p>
-                        <p>Best regards,<br><strong>The PiCASF Team</strong></p>
-                        <a href="https://picasf.com" class="cta">Visit Our Website</a>
-                    </div>
-                    <div class="footer">
-                        <p>&copy; 2024 PiCASF. All rights reserved.</p>
-                        <p>PiCASF, Kigali, Rwanda | <a href="mailto:admin@picasf.com">admin@picasf.com</a></p>
-                    </div>
-                </div>
-            </body>
-        </html>`, // Email body (HTML format)
-});
+                        <blockquote>"${message}"</blockquote>
+                        <p>Best regards,<br>The PiCASF Team</p>
+                    </body>
+                </html>`,
+        });
 
-
-        console.log('Feedback email sent to the customer successfully.');
+        // Respond with success
+        res.status(200).json({ success: true, message: 'Emails sent successfully.' });
     } catch (error) {
         console.error('Error sending emails:', error);
+
+        // Respond with error
+        res.status(500).json({ success: false, message: 'Failed to send emails. Please try again later.' });
     }
-}
-
-// Example usage
-const customerDetails = {
-    name: req.body.name,
-    email: req.body.email,
-    subject: req.body.subject,
-    message: req.body.message,
-};
-
-// Execute the email sending function
-sendEmail(customerDetails);
-
-})
+});
 
 
 
