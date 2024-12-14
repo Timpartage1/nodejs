@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const nodemailer = require('nodemailer');
 const ejs=require('ejs')
+const path = require('path');
 //rendering views 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
