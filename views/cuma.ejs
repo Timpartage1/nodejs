@@ -10,30 +10,108 @@
   <!-- Custom CSS -->
   <style>
     body {
-      background-color: #f8f9fa;
-      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
     }
+
     .hero-section {
-      background-color: #6c757d;
+      background-color: #004d40;
       color: white;
-      padding: 80px 0;
+      padding: 100px 0;
       text-align: center;
+      background-image: url('https://via.placeholder.com/1920x800/004d40/ffffff?text=Joseph+Chuma+-+My+Guitar+and+Tourism');
+      background-size: cover;
+      background-position: center;
     }
+
+    .hero-section h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
     .author-image {
       width: 250px;
       height: 250px;
       border-radius: 50%;
       margin-top: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     }
+
     .content-section {
       margin: 50px 0;
     }
+
+    .content-section h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #004d40;
+    }
+
     .footer {
       background-color: #343a40;
       color: white;
-      padding: 20px;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .btn-lg {
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary {
+      background-color: #00695c;
+      border-color: #00695c;
+    }
+
+    .btn-primary:hover {
+      background-color: #004d40;
+      border-color: #004d40;
+    }
+
+    .btn-success {
+      background-color: #2e7d32;
+      border-color: #2e7d32;
+    }
+
+    .btn-success:hover {
+      background-color: #1b5e20;
+      border-color: #1b5e20;
+    }
+
+    .download-section {
+      margin-top: 50px;
       text-align: center;
     }
+
+    .download-section p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #555;
+    }
+
   </style>
 </head>
 
@@ -42,7 +120,7 @@
   <!-- Hero Section -->
   <div class="hero-section">
     <h1>Welcome to My Guitar and Tourism</h1>
-    <p>Explore the journey of music, culture, and connection</p>
+    <p>Explore the journey of music, culture, and connection with Joseph Chuma</p>
   </div>
 
   <!-- About the Author Section -->
@@ -59,15 +137,17 @@
   </div>
 
   <!-- Book Download Section -->
-  <div class="container content-section">
+  <div class="container download-section">
     <h2>Download the Book</h2>
-    <p>Click the button below to download a free PDF copy of "My Guitar and Tourism" and join Joseph on his unforgettable journey.</p>
-    <a href="/path/to/your/book.pdf" class="btn btn-primary btn-lg">Download the Book</a>
+    <p>Click the buttons below to download a free copy of "My Guitar and Tourism" in your preferred format:</p>
+    <a href="/book.pdf" class="btn btn-primary btn-lg">Download PDF</a>
+    <a href="/book.epub" class="btn btn-success btn-lg" style="margin-left: 10px;">Download EPUB</a>
   </div>
 
   <!-- Footer Section -->
   <div class="footer">
     <p>&copy; 2025 Joseph Chuma. All rights reserved.</p>
+    <p>For inquiries or collaborations, please <a href="mailto:contact@josephchuma.com">contact us</a>.</p>
   </div>
 
   <!-- Bootstrap JS and dependencies -->
