@@ -14,7 +14,7 @@ const dbUri = "mongodb+srv://root:8466%40tim@timongo.ydcds.mongodb.net/" +
     "?retryWrites=true&w=majority&appName=supermarket";
 
 // //149.82.54.21/32,15.114.158.56
-// moongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+// moongoose.connect(dbUri, { useNewUrlParser: 1true, useUnifiedTopology: true })
 //     .then(() => {
 //         console.log("Database connected succesfully");
        
@@ -27,6 +27,10 @@ const dbUri = "mongodb+srv://root:8466%40tim@timongo.ydcds.mongodb.net/" +
 
 app.get('/', (req, res) => {
     res.render('index');
+});
+
+app.get('/josephcuma', (req, res) => {
+    res.render('cuma');
 });
 
 
