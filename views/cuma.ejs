@@ -7,6 +7,7 @@
   <title>Joseph Chuma - My Guitar and Tourism</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
   <style>
     body {
       background-color: #000;
@@ -19,24 +20,22 @@
     /* Fullscreen Hero Section */
     .hero-section {
       position: relative;
-      width: 100%;
-      min-height: 100vh; /* Ensures proper height on mobile */
+      height: 100vh;
       background: url('https://picasf.com/images/cuma.jpg') center center no-repeat;
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 20px;
+      color: white;
     }
 
     /* Text Box with semi-transparent background */
     .overlay {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
       padding: 20px;
       border-radius: 10px;
       display: inline-block;
-      max-width: 80%;
     }
 
     .overlay h1 {
@@ -54,11 +53,6 @@
 
     /* Responsive text adjustments */
     @media (max-width: 767px) {
-      .overlay {
-        max-width: 90%;
-        padding: 15px;
-      }
-
       .overlay h1 {
         font-size: 2.5rem;
       }
@@ -66,20 +60,15 @@
       .overlay p {
         font-size: 1.1rem;
       }
-
-      .hero-section {
-        padding: 40px 10px;
-        background-position: center top;
-      }
     }
 
     /* Navigation */
     .navbar {
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.5);
       padding: 10px 0;
       z-index: 100;
     }
@@ -98,63 +87,51 @@
       text-decoration: none;
     }
 
-    /* Section Styling */
-    .section {
-      padding: 80px 20px;
+    /* Content Section */
+    .content-section {
+      padding: 100px 20px;
+      background-color: #222;
       text-align: center;
     }
 
-    .section h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
+    .content-section h2 {
+      font-size: 3rem;
+      color: #4caf50;
+      font-weight: 700;
     }
 
-    .section p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
+    .content-section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      line-height: 1.8;
     }
 
-    /* Contact Form */
-    .contact-form {
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .form-control {
-      background: #222;
-      color: #fff;
-      border: 1px solid #444;
-    }
-
-    .form-control:focus {
-      background: #333;
-      color: #fff;
-      border: 1px solid #4caf50;
-    }
-
-    .btn-custom {
-      background: #4caf50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn-custom:hover {
-      background: #3e8e41;
+    .author-image {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      margin-top: 30px;
+      border: 4px solid #fff;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     }
 
     /* Footer */
     .footer {
-      background: #111;
-      padding: 20px;
+      background-color: #000;
+      color: #fff;
+      padding: 30px 0;
       text-align: center;
-      font-size: 0.9rem;
-      margin-top: 50px;
+      font-size: 1rem;
+    }
+
+    .footer a {
+      color: #4caf50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -193,45 +170,58 @@
     </div>
   </div>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>Joseph Chuma is a passionate guitarist and travel enthusiast, blending melodies with cultural exploration. Join the adventure!</p>
-  </section>
+  <!-- About the Author Section -->
+  <div id="about" class="container content-section">
+    <h2>About Joseph Chuma</h2>
+    <p>Joseph Chuma, also known as Mwenyemali Chuma Fiston is a passionate guitarist whose music connects people from all walks of life.</p>
+    <img src="https://picasf.com/images/prof.png" alt="Joseph Chuma" class="author-image">
+  </div>
 
-  <!-- Reading Section -->
-  <section id="read" class="section">
-    <h2>Read More</h2>
-    <p>Dive into stories, experiences, and reflections on music, life, and travel.</p>
-  </section>
+  <!-- Book Section -->
+  <div id="read" class="container content-section">
+    <h2>Read the Book</h2>
+    <p>Click below to read "My Guitar and Tourism" directly in your browser:</p>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <h2>Contact Me</h2>
-    <form class="contact-form">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-custom">Send Message</button>
-    </form>
-  </section>
+    <!-- EPUB Reader -->
+    <div id="reader"></div>
 
-  <!-- Footer -->
+    <!-- Buttons for download -->
+    <a href="/cuma.pdf" class="btn btn-primary btn-lg">Download PDF</a>
+    <a href="/cuma.epub" class="btn btn-success btn-lg">Download EPUB</a>
+  </div>
+
+  <!-- Footer Section -->
   <div class="footer">
-    &copy; 2025 Joseph Chuma | Made with ❤️
+    <p>&copy; 2025 Joseph Chuma. All rights reserved.</p>
+    <p>For inquiries or collaborations, please <a href="mailto:progressionprogressi@gmail.com">contact us</a>.</p>
+
+    <!-- Social Media Links -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/joseph_cuma_official" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" width="30">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100040169770178" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook" width="30">
+      </a>
+      <a href="https://wa.me/254792446071" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
+      </a>
+    </div>
   </div>
 
   <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+  <!-- EPUB.js Script -->
+  <script>
+    const book = ePub("/cuma.epub");
+    const rendition = book.renderTo("reader", {
+      width: "100%",
+      height: 600
+    });
+    rendition.display();
+  </script>
 
 </body>
 </html>
