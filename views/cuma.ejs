@@ -32,7 +32,7 @@
 
     /* Text Box with semi-transparent background */
     .overlay {
-      background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+      background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
       display: inline-block;
@@ -55,7 +55,7 @@
     /* Responsive text adjustments */
     @media (max-width: 767px) {
       .overlay {
-        max-width: 90%; /* Ensure text stays inside on small screens */
+        max-width: 90%;
         padding: 15px;
       }
 
@@ -68,18 +68,18 @@
       }
 
       .hero-section {
-        padding: 40px 10px; /* More space on mobile */
-        background-position: center top; /* Better focus on main image */
+        padding: 40px 10px;
+        background-position: center top;
       }
     }
 
     /* Navigation */
     .navbar {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.8);
       padding: 10px 0;
       z-index: 100;
     }
@@ -96,6 +96,65 @@
     .navbar a:hover {
       color: #4caf50;
       text-decoration: none;
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .form-control {
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+    }
+
+    .form-control:focus {
+      background: #333;
+      color: #fff;
+      border: 1px solid #4caf50;
+    }
+
+    .btn-custom {
+      background: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+      background: #3e8e41;
+    }
+
+    /* Footer */
+    .footer {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 50px;
     }
   </style>
 </head>
@@ -132,6 +191,43 @@
       <h1>JOSEPH CHUMA FISTON</h1>
       <p>Explore the journey of music, culture, and connection with Joseph Chuma</p>
     </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>Joseph Chuma is a passionate guitarist and travel enthusiast, blending melodies with cultural exploration. Join the adventure!</p>
+  </section>
+
+  <!-- Reading Section -->
+  <section id="read" class="section">
+    <h2>Read More</h2>
+    <p>Dive into stories, experiences, and reflections on music, life, and travel.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-custom">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    &copy; 2025 Joseph Chuma | Made with ❤️
   </div>
 
   <!-- Bootstrap JS -->
