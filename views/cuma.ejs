@@ -14,7 +14,7 @@
       color: #fff;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       line-height: 1.6;
-      scroll-behavior: smooth; /* Add smooth scrolling for anchor links */
+      scroll-behavior: smooth;
     }
 
     /* Fullscreen Hero Section */
@@ -27,29 +27,37 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #13ac34;
+      color: white;
     }
 
-    .hero-section h1 {
+    /* Text Box with semi-transparent background */
+    .overlay {
+      background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .overlay h1 {
       font-size: 4rem;
       font-weight: bold;
       letter-spacing: 5px;
       text-transform: uppercase;
     }
 
-    .hero-section p {
+    .overlay p {
       font-size: 1.5rem;
       font-weight: lighter;
       margin-top: 20px;
     }
 
-    /* Make hero section text smaller on mobile */
+    /* Responsive text adjustments */
     @media (max-width: 767px) {
-      .hero-section h1 {
+      .overlay h1 {
         font-size: 2.5rem;
       }
 
-      .hero-section p {
+      .overlay p {
         font-size: 1.1rem;
       }
     }
@@ -75,7 +83,6 @@
     }
 
     .navbar a:hover {
-      /* color: #4caf50; */
       color: #4caf50;
       text-decoration: none;
     }
@@ -126,35 +133,6 @@
     .footer a:hover {
       text-decoration: underline;
     }
-
-    /* Buttons */
-    .btn-lg {
-      padding: 15px 25px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin: 20px 0;
-    }
-
-    .btn-primary {
-      background-color: #4caf50;
-      border-color: #4caf50;
-    }
-
-    .btn-primary:hover {
-      background-color: #4caf50;
-      border-color: #4caf50;
-    }
-
-    .btn-success {
-      background-color: #8e44ad;
-      border-color: #8e44ad;
-    }
-
-    .btn-success:hover {
-      background-color: #5e3370;
-      border-color: #5e3370;
-    }
   </style>
 </head>
 
@@ -186,7 +164,7 @@
 
   <!-- Hero Section -->
   <div class="hero-section">
-    <div>
+    <div class="overlay">
       <h1>JOSEPH CHUMA FISTON</h1>
       <p>Explore the journey of music, culture, and connection with Joseph Chuma</p>
     </div>
@@ -195,7 +173,7 @@
   <!-- About the Author Section -->
   <div id="about" class="container content-section">
     <h2>About Joseph Chuma</h2>
-    <p>Joseph Chuma, also known as Mwenyemali Chuma Fiston is a passionate guitarist whose music connects people from all walks of life. His journey through music and tourism has transformed lives and brought joy to those he meets. From humble beginnings to international performances, his music has become a universal language of happiness and connection.</p>
+    <p>Joseph Chuma, also known as Mwenyemali Chuma Fiston is a passionate guitarist whose music connects people from all walks of life.</p>
     <img src="https://picasf.com/images/prof.png" alt="Joseph Chuma" class="author-image">
   </div>
 
@@ -213,38 +191,31 @@
   </div>
 
   <!-- Footer Section -->
-<div class="footer">
-  <p>&copy; 2025 Joseph Chuma. All rights reserved.</p>
-  <p>For inquiries or collaborations, please <a href="mailto:progressionprogressi@gmail.com">contact us</a>.</p>
-
-  <!-- Social Media Links -->
-  <div class="social-links">
-    <a href="https://www.instagram.com/joseph_cuma_official" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" width="30">
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=100040169770178" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook" width="30">
-    </a>
-    <a href="https://wa.me/254792446071" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
-    </a>
-  </div>
-</div>
-
-
-  <!-- Footer Section -->
-  <!-- <div class="footer">
+  <div class="footer">
     <p>&copy; 2025 Joseph Chuma. All rights reserved.</p>
     <p>For inquiries or collaborations, please <a href="mailto:progressionprogressi@gmail.com">contact us</a>.</p>
-  </div> -->
 
-  <!-- Bootstrap JS and dependencies -->
+    <!-- Social Media Links -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/joseph_cuma_official" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" width="30">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100040169770178" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook" width="30">
+      </a>
+      <a href="https://wa.me/254792446071" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
+      </a>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
-  <!-- EPUB.js Script to load the EPUB file -->
+  <!-- EPUB.js Script -->
   <script>
-    const book = ePub("/cuma.epub"); // Replace with the path to your EPUB file
+    const book = ePub("/cuma.epub");
     const rendition = book.renderTo("reader", {
       width: "100%",
       height: 600
@@ -253,5 +224,4 @@
   </script>
 
 </body>
-
 </html>
