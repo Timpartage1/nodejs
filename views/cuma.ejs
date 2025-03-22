@@ -17,7 +17,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Fullscreen Hero Section */
     .hero-section {
       position: relative;
       height: 100vh;
@@ -30,9 +29,8 @@
       color: white;
     }
 
-    /* Text Box with semi-transparent background */
     .overlay {
-      background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+      background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
       display: inline-block;
@@ -51,7 +49,6 @@
       margin-top: 20px;
     }
 
-    /* Responsive text adjustments */
     @media (max-width: 767px) {
       .overlay h1 {
         font-size: 2.5rem;
@@ -62,7 +59,6 @@
       }
     }
 
-    /* Navigation */
     .navbar {
       position: absolute;
       top: 0;
@@ -87,7 +83,6 @@
       text-decoration: none;
     }
 
-    /* Content Section */
     .content-section {
       padding: 100px 20px;
       background-color: #222;
@@ -115,7 +110,6 @@
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* Footer */
     .footer {
       background-color: #000;
       color: #fff;
@@ -137,32 +131,22 @@
 </head>
 
 <body>
-
-  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="#">Joseph Chuma</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#read">Read</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#read">Read</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <div class="hero-section">
     <div class="overlay">
       <h1>JOSEPH CHUMA FISTON</h1>
@@ -170,58 +154,22 @@
     </div>
   </div>
 
-  <!-- About the Author Section -->
   <div id="about" class="container content-section">
     <h2>About Joseph Chuma</h2>
-    <p>Joseph Chuma, also known as Mwenyemali Chuma Fiston is a passionate guitarist whose music connects people from all walks of life.</p>
+    <p>Joseph Chuma, also known as Mwenyemali Chuma Fiston, is a passionate guitarist whose music connects people from all walks of life.</p>
     <img src="https://picasf.com/images/prof.png" alt="Joseph Chuma" class="author-image">
   </div>
 
-  <!-- Book Section -->
-  <div id="read" class="container content-section">
-    <h2>Read the Book</h2>
-    <p>Click below to read "My Guitar and Tourism" directly in your browser:</p>
-
-    <!-- EPUB Reader -->
-    <div id="reader"></div>
-
-    <!-- Buttons for download -->
-    <a href="/cuma.pdf" class="btn btn-primary btn-lg">Download PDF</a>
-    <a href="/cuma.epub" class="btn btn-success btn-lg">Download EPUB</a>
-  </div>
-
-  <!-- Footer Section -->
   <div class="footer">
     <p>&copy; 2025 Joseph Chuma. All rights reserved.</p>
     <p>For inquiries or collaborations, please <a href="mailto:progressionprogressi@gmail.com">contact us</a>.</p>
-
-    <!-- Social Media Links -->
     <div class="social-links">
-      <a href="https://www.instagram.com/joseph_cuma_official" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" width="30">
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=100040169770178" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook" width="30">
-      </a>
-      <a href="https://wa.me/254792446071" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
-      </a>
+      <a href="https://www.instagram.com/joseph_chuma_official" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/profile.php?id=100040169770178" target="_blank">Facebook</a> |
+      <a href="https://wa.me/254792446071" target="_blank">WhatsApp</a> |
+      <a href="https://www.linkedin.com/in/mwenyemali-chuma-10353820b/" target="_blank">LinkedIn</a> |
+      <a href="https://www.tiktok.com/@yosefchumaofficial" target="_blank">TikTok</a>
     </div>
   </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-
-  <!-- EPUB.js Script -->
-  <script>
-    const book = ePub("/cuma.epub");
-    const rendition = book.renderTo("reader", {
-      width: "100%",
-      height: 600
-    });
-    rendition.display();
-  </script>
-
 </body>
 </html>
