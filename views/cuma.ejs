@@ -29,19 +29,22 @@
       align-items: center;
       text-align: center;
       color: white;
+      padding: 0 20px;
     }
 
     .overlay {
       background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
+      padding: 30px;
       border-radius: 10px;
       display: inline-block;
+      max-width: 90%;
+      width: 600px;
     }
 
     .overlay h1 {
       font-size: 4rem;
       font-weight: bold;
-      letter-spacing: 5px;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
@@ -49,6 +52,21 @@
       font-size: 1.5rem;
       font-weight: lighter;
       margin-top: 20px;
+    }
+
+    @media (max-width: 767px) {
+      .overlay {
+        padding: 20px;
+        width: 90%;
+      }
+
+      .overlay h1 {
+        font-size: 2rem;
+      }
+
+      .overlay p {
+        font-size: 1rem;
+      }
     }
 
     @media (max-width: 767px) {
