@@ -115,54 +115,6 @@
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* Gallery Section */
-    .gallery-section {
-      padding: 100px 20px;
-      background-color: #333;
-    }
-
-    .gallery-section h2 {
-      font-size: 3rem;
-      color: #4caf50;
-      font-weight: 700;
-      margin-bottom: 40px;
-    }
-
-    .gallery-item {
-      margin: 10px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item img:hover {
-      transform: scale(1.1);
-    }
-
-    /* Journey Section */
-    .journey-section {
-      padding: 100px 20px;
-      background-color: #222;
-      color: #fff;
-    }
-
-    .journey-section h2 {
-      font-size: 3rem;
-      color: #4caf50;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .journey-video {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
     /* Footer */
     .footer {
       background-color: #000;
@@ -200,10 +152,7 @@
             <a class="nav-link" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#gallery">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#journey">Journey</a>
+            <a class="nav-link" href="#read">Read</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
@@ -228,33 +177,17 @@
     <img src="https://picasf.com/images/prof.png" alt="Joseph Chuma" class="author-image">
   </div>
 
-  <!-- Gallery Section -->
-  <div id="gallery" class="container gallery-section">
-    <h2>Gallery</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/350x250" alt="Gallery Image 1">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/350x250" alt="Gallery Image 2">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/350x250" alt="Gallery Image 3">
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Book Section -->
+  <div id="read" class="container content-section">
+    <h2>Read the Book</h2>
+    <p>Click below to read "My Guitar and Tourism" directly in your browser:</p>
 
-  <!-- Journey Section -->
-  <div id="journey" class="container journey-section">
-    <h2>My Journey</h2>
-    <p>Watch the video below to learn more about my musical journey and passion for tourism:</p>
-    <iframe class="journey-video" width="100%" height="500" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- EPUB Reader -->
+    <div id="reader"></div>
+
+    <!-- Buttons for download -->
+    <a href="/cuma.pdf" class="btn btn-primary btn-lg">Download PDF</a>
+    <a href="/cuma.epub" class="btn btn-success btn-lg">Download EPUB</a>
   </div>
 
   <!-- Footer Section -->
@@ -280,6 +213,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
-</body>
+  <!-- EPUB.js Script -->
+  <script>
+    const book = ePub("/cuma.epub");
+    const rendition = book.renderTo("reader", {
+      width: "100%",
+      height: 600
+    });
+    rendition.display();
+  </script>
 
+</body>
 </html>
