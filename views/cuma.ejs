@@ -59,10 +59,14 @@
       color: #ffd700;
     }
 
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
     .social-icons a {
       color: white;
       font-size: 1.3rem;
-      margin: 0 10px;
       transition: color 0.3s;
     }
 
@@ -118,14 +122,24 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Joseph Chuma</a>
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="#">FISTON CUMA</a>
       <div class="social-icons">
         <a href="https://www.instagram.com/joseph_chuma_official" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.facebook.com/profile.php?id=100040169770178" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://wa.me/254792446071" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <a href="https://www.linkedin.com/in/mwenyemali-chuma-10353820b/" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://www.tiktok.com/@yosefchumaofficial" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#inspiration">Inspiration</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -140,7 +154,6 @@
   <div id="about" class="content-section">
     <h2>About Joseph Chuma</h2>
     <p>A passionate guitarist whose music connects people from all walks of life.</p>
-    <img src="https://picasf.com/images/prof.png" alt="Joseph Chuma" class="author-image">
   </div>
 
   <div id="gallery" class="content-section">
@@ -167,8 +180,5 @@
     <p>&copy; 2025 Joseph Chuma. All rights reserved.</p>
     <p>For inquiries, <a href="mailto:progressionprogressi@gmail.com">contact us</a>.</p>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
