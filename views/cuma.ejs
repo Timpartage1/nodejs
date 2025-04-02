@@ -106,11 +106,25 @@
     }
 
     .video-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%; /* Adjust width for large screens */
+    max-width: 900px; /* Maximum width for big screens */
+    margin: 0 auto; /* Center the container */
+}
 
+.video-container video {
+    width: 100%; /* Make the video responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .video-container {
+        width: 95%; /* Slightly larger on smaller screens */
+    }
+}
     .footer {
       background-color: #000;
       color: #fff;
@@ -215,9 +229,9 @@
 
 
   <div id="inspiration" class="content-section">
-    <h2>How I Get Inspired</h2>
+    <h2>Vision</h2>
     <div class="video-container">
-      <video controls width="800">
+      <video controls width="600">
         <source src="https://picasf.com/images/inspiration.mp4" type="video/mp4">
       </video>
     </div>
@@ -232,7 +246,7 @@
       <img src="https://picasf.com/images/gallery4.jpg" alt="Gallery Image 4">
       <img src="https://picasf.com/images/gallery5.jpg" alt="Gallery Image 5">
       <img src="https://picasf.com/images/gallery6.jpg" alt="Gallery Image 6">
-      <img src="https://picasf.com/images/gallery7.jpg" alt="Gallery Image 7">
+      <img src="https://picasf.com/images/gallery7.png" alt="Gallery Image 7">
       
       <video controls>
         <source src="https://picasf.com/images/inspiration.mp4" type="video/mp4">
