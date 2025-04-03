@@ -44,7 +44,7 @@
 
     .navbar {
       background: rgba(0, 0, 0, 0.8);
-      padding: 10px 0;
+      padding: 8px 0;
     }
 
     .navbar a {
@@ -106,11 +106,25 @@
     }
 
     .video-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* Adjust width for large screens */
+    max-width: 900px; /* Maximum width for big screens */
+    margin: 0 auto; /* Center the container */
+}
 
+.video-container video {
+    width: 100%; /* Make the video responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .video-container {
+        width: 95%; /* Slightly larger on smaller screens */
+    }
+}
     .footer {
       background-color: #000;
       color: #fff;
@@ -169,7 +183,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container d-flex justify-content-between align-items-center">
-      <a class="navbar-brand" href="#">FISTON CUMA</a>
+      <a class="navbar-brand" href="#">JOSEPH CHUMA</a>
       <div class="d-flex align-items-center">
         <div class="social-icons me-3">
           <a href="https://www.instagram.com/joseph_chuma_official" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -202,13 +216,25 @@
   <!-- Book Banner Section -->
   <div class="book-banner">
     <h2>Book Joseph Chuma for Your Next Event</h2>
-    <p>Don't miss the opportunity to experience live music like never before. Book Joseph now for an unforgettable event!</p>
+    <p>Don't miss the opportunity to experience live music like never before or buy Chuma's book. Book Joseph now for an unforgettable event!</p>
     <a href="mailto:progressionprogressi@gmail.com">Book Now</a>
   </div>
 
   <div id="about" class="content-section">
     <h2>About Joseph Chuma</h2>
-    <p>A passionate guitarist whose music connects people from all walks of life.</p>
+    <p>A seasoned guitarist, weary of the silence in people's hearts, embarks on a journey to bring back their smiles. Along the way, he encounters travelers from diverse backgrounds—each meeting igniting new inspiration for his melodies.  
+    With every chord, he weaves stories of joy, longing, and transformation, connecting souls beyond language and borders. The tourists he meets carry their own tales of love, loss, and hope, and through his music, he unknowingly becomes a bridge to their healing.  
+    In a serendipitous twist, a group of travelers forms an impromptu band with him, blending cultures and rhythms into a symphony of unity. Through shared melodies, they discover the unspoken magic of music—the one language that binds humanity together.</p>
+</div>
+
+
+  <div id="inspiration" class="content-section">
+    <h2>Vision</h2>
+    <div class="video-container">
+      <video controls width="600" preload="auto">
+        <source src="https://picasf.com/images/inspiration.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 
   <div id="gallery" class="content-section">
@@ -218,21 +244,17 @@
       <img src="https://picasf.com/images/gallery2.jpg" alt="Gallery Image 2">
       <img src="https://picasf.com/images/gallery3.jpg" alt="Gallery Image 3">
       <img src="https://picasf.com/images/gallery4.jpg" alt="Gallery Image 4">
+      <!-- <img src="https://picasf.com/images/gallery5.jpg" alt="Gallery Image 5">
+      <img src="https://picasf.com/images/gallery6.jpg" alt="Gallery Image 6">
+      <img src="https://picasf.com/images/gallery8.png" alt="Gallery Image 7"> -->
       
       <video controls>
-        <source src="https://picasf.com/images/inspiration.mp4" type="video/mp4">
+        <source src="https://picasf.com/images/end.mp4" preload="auto" type="video/mp4">
       </video>
     </div>
   </div>
 
-  <div id="inspiration" class="content-section">
-    <h2>How I Get Inspired</h2>
-    <div class="video-container">
-      <video controls width="600">
-        <source src="https://picasf.com/images/inspiration.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
+
 
   <div class="footer">
     <p>&copy; 2025 Joseph Chuma. All rights reserved.</p>
