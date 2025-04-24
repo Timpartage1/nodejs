@@ -100,3 +100,30 @@ app.use((req, res) => {
     res.send('Not found')
 
 });
+
+app.post('/momocallback', (req, res) => {
+    const { status, depositId, created, rejectionReason } = req.body;
+
+    let responseMessage = '';
+
+    switch (status) {
+        case 'ACCEPTED':
+            responseMessage = 'You have paid successfully. Thank you!';
+            break;
+        case 'REJECTED':
+            responseMessage = `Your payment was rejected. Reason: ${rejectionReason || 'Unknown reason'}. Please ensure you have enough balance.`;
+            break;
+        case 'DUPLICATE_IGNORED':
+            responseMessage = 'Please do *182*7*1# and proceed to pay. It\'s still a pending payment. Or restart your order from scratch.';
+            break;
+        default:
+            responseMessage = 'Payment status unknown. Please contact support.';
+    }
+
+    // Log the full payload for debugging
+    console.log("Callback received:", req.body);
+
+    // Return plain text response
+    res.setHeader('Content-Type', 'text/plain');
+    res.status(200).send(responseMessage);
+});
