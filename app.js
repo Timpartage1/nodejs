@@ -95,11 +95,6 @@ app.get('/cookie-policy',(req, res) => {
     res.render('cookie-policy');
 })
 
-app.use((req, res) => {
-
-    res.send('Not found')
-
-});
 
 app.post('/momocallback', (req, res) => {
     const { status, depositId, created, rejectionReason } = req.body;
@@ -126,4 +121,11 @@ app.post('/momocallback', (req, res) => {
     // Return plain text response
     res.setHeader('Content-Type', 'text/plain');
     res.status(200).send(responseMessage);
+});
+
+
+app.use((req, res) => {
+
+    res.send('Not found')
+
 });
