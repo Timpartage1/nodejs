@@ -92,8 +92,7 @@ const paymentStatuses = {}; // { orderId: { status: 'ACCEPTED' or 'REJECTED', re
 
 // Pawapay will call this after payment
 app.post('/momocallback', async (req, res) => {
-        console.log('Callback received:', req.body);
-
+    console.log('Callback received:', req.body)
     const { depositId, status, rejectionReason, metadata } = req.body;
 
     const orderIdMeta = metadata.find(m => m.fieldName === 'orderId');
