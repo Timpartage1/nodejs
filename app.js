@@ -112,7 +112,7 @@ app.post('/momocallback', async (req, res) => {
     console.log(`Payment ${depositId} accepted! Turning on Arduino...`);
 
     try {
-      await axios.get('https://3179-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on'); // Change to your Arduino IP
+      await axios.get('https://f5ea-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on'); // Change to your Arduino IP
       console.log('Arduino light turned ON.');
     } catch (error) {
       console.error('Error sending command to Arduino:', error.message);
