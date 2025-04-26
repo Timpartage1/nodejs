@@ -103,31 +103,42 @@ app.get('/cookie-policy',(req, res) => {
 app.use(express.json());
 app.use(bodyParser.json());
 
+// Store payment statuses here temporarily
+const paymentStatuses = {};  // { orderId: {status: 'ACCEPTED' or 'REJECTED', reason: 'xxx'} }
+
 app.post('/momocallback', async (req, res) => {
-  console.log('Received callback:', req.body);
+    const { depositId, status, rejectionReason, metadata } = req.body;
 
-  const { status, depositId, rejectionReason } = req.body;
+    // Extract orderId from metadata
+    const orderIdMeta = metadata.find(m => m.fieldName === 'orderId');
+    const orderId = orderIdMeta ? orderIdMeta.fieldValue : null;
 
-  if (status === 'ACCEPTED') {
-    console.log(`Payment ${depositId} accepted! Turning on Arduino...`);
-
-    try {
-      await axios.get('https://f5ea-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on'); // Change to your Arduino IP
-      console.log('Arduino light turned ON.');
-    } catch (error) {
-      console.error('Error sending command to Arduino:', error.message);
+    if (!orderId) {
+        console.error('Missing orderId in callback');
+        return res.status(400).send('Missing orderId');
     }
-  } else if (status === 'REJECTED') {
-    console.log(`Payment ${depositId} rejected: ${rejectionReason}`);
-  } else if (status === 'DUPLICATE_IGNORED') {
-    console.log(`Payment ${depositId} ignored as duplicate.`);
-  }
 
-  // Always send back 200 OK
-  res.status(200).send('Callback received.');
+    if (status === 'ACCEPTED') {
+        paymentStatuses[orderId] = { status: 'ACCEPTED' };
+        try {
+            // Call Arduino ONLY if accepted
+            await axios.get('https://f5ea-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on');
+            console.log('Arduino turned ON for order:', orderId);
+        } catch (error) {
+            console.error('Failed to trigger Arduino:', error);
+        }
+    } else if (status === 'REJECTED') {
+        paymentStatuses[orderId] = { status: 'REJECTED', reason: rejectionReason };
+    }
+
+    res.status(200).send('Callback received');
 });
-app.use((req, res) => {
 
-    res.send('Not found')
-
+// Endpoint Flutter will call to check payment status
+app.get('/check-payment-status', (req, res) => {
+    const orderId = req.query.orderId;
+    if (!orderId || !paymentStatuses[orderId]) {
+        return res.status(404).send('Not found');
+    }
+    res.json(paymentStatuses[orderId]);
 });
