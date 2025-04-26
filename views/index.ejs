@@ -1,6 +1,554 @@
-<html>
-<head></head
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Basic Metadata -->
+        <title>PICASF - Leading IT Solutions for Businesses</title>
+        <meta name="description" content="PICASF offers world-class IT support, cloud solutions, and cybersecurity services. Partner with us to drive digital transformation for your business.">
+        <meta name="keywords" content="PICASF, IT solutions, IT support, cloud services, cybersecurity, IT consulting, digital transformation, IT partners, business technology">
+        <meta name="author" content="PICASF">
+        
+        <!-- Social Media and Open Graph Metadata -->
+        <meta property="og:title" content="PICASF - Leading IT Solutions for Businesses">
+        <meta property="og:description" content="Delivering tailored IT solutions for businesses, empowering innovation, and driving digital transformation.">
+        <meta property="og:image" content="https://picasf.com/images/picasf.JPG">
+        <meta property="og:url" content="https://picasf.com">
+        <meta property="og:type" content="website">
+        
+        <!-- Twitter Card Metadata -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="PICASF - Leading IT Solutions">
+        <meta name="twitter:description" content="Discover world-class IT solutions, cloud services, and cybersecurity tailored to your business needs.">
+        <meta name="twitter:image" content="https://picasf.com/images/picasf.JPG">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://picasf.com">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="https://picasf.com/images/picasf.JPG">
+        
+        <!-- Robots -->
+        <meta name="robots" content="index, follow">
+        
+        <!-- Structured Data (Schema.org) -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "PICASF",
+          "url": "https://picasf.com",
+          "logo": "https://picasf.com/images/picasf.JPG",
+          "description": "World-class IT support, cloud solutions, and cybersecurity services.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+250 786554365",
+            "contactType": "Customer Support",
+            "areaServed": "Worldwide",
+            "availableLanguage": "English"
+          },
+          "sameAs": [
+            "https://facebook.com/picasf",
+            "https://linkedin.com/company/picasf",
+            "https://twitter.com/picasf"
+          ]
+        }
+        </script>
+        
+        <!-- Sitemap -->
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+        
+        <!-- CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+        
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+       
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .hero-section {
+      background: url('/images/team.jpg') no-repeat center center/cover;
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    .hero-section .btn-primary {
+      padding: 0.8rem 1.5rem;
+      font-size: 1.2rem;
+    }
+    .navbar-brand img {
+      max-height: 50px;
+    }
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .service-card h5 {
+      color: #007bff;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .bg-light {
+      background-color: #f8f9fa !important;
+    }
+    footer {
+      background: #222;
+      color: #bbb;
+    }
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .hero-section h1 {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-section p {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.hero-section .btn-primary:hover {
+  background-color: #2980b9;
+  color: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  color: white;
+  padding: 15px 20px;
+  z-index: 9999;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cookie-consent-banner a {
+  color: #ffeb3b;
+  text-decoration: none;
+}
+
+.cookie-consent-banner a:hover {
+  text-decoration: underline;
+}
+
+.cookie-consent-banner button {
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+#accept-cookies {
+  background-color: #28a745;
+}
+
+#reject-cookies {
+  background-color: #dc3545;
+}
+
+
+  </style>
+</head>
 <body>
-<span style="font-weight:400px; font">We are opening soon...</span>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <div class="container" style="background-color: #000000;">
+      <a class="navbar-brand" href="#">
+        <img src="/images/picasf.JPG" alt="PICASF Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav"  >
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#careers">Careers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+ <!-- Contact info in navbar -->
+ <div class="navbar-text ms-3 text-white">
+    <span><i class="bi bi-telephone"></i> +250786554365</span> | 
+    <span><i class="bi bi-envelope"></i> <a href="mailto:admin@picasf.com" class="text-white">admin@picasf.com</a></span>
+  </div>
+
+
+      </div>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+<div class="hero-section" style="position: relative; height: 100vh;">
+    <!-- Background Image -->
+    <div style="
+        background: url('/images/team.jpg') no-repeat center center/cover;
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        z-index: 1;
+        filter: brightness(0.6);">
+    </div>
+    
+    <!-- Content Overlay -->
+    <div style="position: relative; z-index: 2; text-align: center; color: white; padding: 20px;">
+      <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px;">
+        Welcome to <span style="color: #3498db;">PICASF</span>
+      </h1>
+      <p style="font-size: 1.25rem; font-weight: 300; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+        Delivering tailored IT solutions for businesses, empowering innovation, and driving digital transformation.
+      </p>
+      <a href="#services" 
+         class="btn btn-primary btn-lg mt-4 px-5 py-3" 
+         style="font-size: 1.1rem; font-weight: 500; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        Explore Our Services
+      </a>
+    </div>
+  </div>
+  
+
+  <!-- Services Section -->
+  <div class="container my-5" id="services">
+    <h2 class="text-center mb-4">Our Services</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card service-card">
+          <img src="images/work.jpg" alt="Service 1">
+          <div class="card-body">
+            <h5 class="card-title">IT Support</h5>
+            <p class="card-text">Comprehensive 24/7 IT support designed to keep your operations seamless and efficient.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card">
+          <img src="images/svc.jpg" alt="Service 2">
+          <div class="card-body">
+            <h5 class="card-title">Cloud Solutions</h5>
+            <p class="card-text">Flexible and secure cloud infrastructure, enabling business scalability and performance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card">
+          <img src="images/codesec.jpg" alt="Service 3">
+          <div class="card-body">
+            <h5 class="card-title">Cybersecurity</h5>
+            <p class="card-text">Proven strategies to safeguard your business data and ensure compliance with global standards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Us Section -->
+<div id="about" class="py-5" style="background: linear-gradient(135deg, #ffffff, #f8f9fa); padding-top: 120px; padding-bottom: 120px;">
+    <div class="container">
+      <h2 class="text-center mb-4" style="font-weight: 700; color: #34495e;">About Us</h2>
+      <p class="text-center text-muted mb-5" style="font-size: 1.1rem;">
+        At PICASF, we deliver cutting-edge IT solutions, empowering businesses to innovate, grow, and succeed in the global market.  
+        Our commitment to excellence drives everything we do.
+      </p>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="p-4 rounded shadow-sm bg-white h-100">
+            <h5 style="color: #2c3e50;"><i class="bi bi-gear-fill text-primary me-2"></i> Our Mission</h5>
+            <p style="font-size: 0.95rem; color: #555;">
+              To enable businesses to achieve their goals through innovative technology, proactive support, and reliable partnerships.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded shadow-sm bg-white h-100">
+            <h5 style="color: #2c3e50;"><i class="bi bi-eye-fill text-primary me-2"></i> Our Vision</h5>
+            <p style="font-size: 0.95rem; color: #555;">
+              To lead the way in IT solutions, shaping the future of technology and enabling exceptional business outcomes globally.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded shadow-sm bg-white h-100">
+            <h5 style="color: #2c3e50;"><i class="bi bi-star-fill text-primary me-2"></i> Core Values</h5>
+            <p style="font-size: 0.95rem; color: #555;">
+              Integrity, innovation, and excellence define us. Collaboration and dedication drive our commitment to client success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Careers Section -->
+  <div id="careers" class="py-5" style="background: linear-gradient(135deg, #f8f9fa, #ffffff); padding-top: 120px; padding-bottom: 120px;">
+    <div class="container">
+      <h2 class="text-center mb-4" style="font-weight: 700; color: #34495e;">Careers at PICASF</h2>
+      <p class="text-center text-muted mb-5" style="font-size: 1.1rem;">
+        Explore exciting opportunities to shape the future of IT with us. Join a team that values your creativity, passion, and growth.
+      </p>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="p-4 rounded shadow-sm bg-white h-100">
+            <h5 style="color: #2c3e50;"><i class="bi bi-hand-thumbs-up-fill text-primary me-2"></i> Why Join Us?</h5>
+            <p style="font-size: 0.95rem; color: #555;">
+              Become part of a collaborative team that values creativity and dedication. At PICASF, your talent shines.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded shadow-sm bg-white h-100">
+            <h5 style="color: #2c3e50;"><i class="bi bi-briefcase-fill text-primary me-2"></i> Professional Growth</h5>
+            <p style="font-size: 0.95rem; color: #555;">
+              Take advantage of mentorships, training programs, and career paths designed to elevate your skills.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded shadow-sm bg-white h-100">
+            <h5 style="color: #2c3e50;"><i class="bi bi-lightbulb-fill text-primary me-2"></i> Exciting Opportunities</h5>
+            <p style="font-size: 0.95rem; color: #555;">
+              Work on groundbreaking projects with global clients. Your ideas and expertise drive our success.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="#contact" class="btn btn-primary px-5 py-2">
+          <i class="bi bi-arrow-right-circle-fill me-2"></i> Explore Open Positions
+        </a>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- Contact Section -->
+<div id="contact" style="background: linear-gradient(135deg, #f3f4f6, #eef1f6); padding: 50px 0;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <!-- Form Card -->
+          <div class="p-5 bg-white shadow rounded">
+            <h2 class="text-center mb-4" style="color: #34495e;">Get in Touch</h2>
+            <p class="text-center text-muted mb-4">
+              Have questions or want to work with us? Fill out the form below, and our team will get back to you shortly.
+            </p>
+            <form id="contactForm" method="post" action="/contact" class="row g-3">
+              <!-- Name -->
+              <div class="col-md-6">
+                  <label for="name" class="form-label">
+                      <i class="bi bi-person-fill me-2 text-primary"></i> Name
+                  </label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Your Full Name" required>
+              </div>
+              <!-- Email -->
+              <div class="col-md-6">
+                  <label for="email" class="form-label">
+                      <i class="bi bi-envelope-fill me-2 text-primary"></i> Email
+                  </label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+              </div>
+              <!-- Subject -->
+              <div class="col-12">
+                  <label for="subject" class="form-label">
+                      <i class="bi bi-chat-text-fill me-2 text-primary"></i> Subject
+                  </label>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Message Subject" required>
+              </div>
+              <!-- Message -->
+              <div class="col-12">
+                  <label for="message" class="form-label">
+                      <i class="bi bi-pencil-fill me-2 text-primary"></i> Message
+                  </label>
+                  <textarea class="form-control" id="message" rows="5" name="message" placeholder="Write your message here..." required></textarea>
+              </div>
+              <!-- Alert for messages -->
+              <div id="formAlert" class="col-12 text-center mt-3" style="display: none;"></div>
+              <!-- Submit Button -->
+              <div class="col-12 text-center">
+                  <button type="submit" id="submitButton" class="btn btn-primary px-5 py-2">
+                      <span id="submitText"><i class="bi bi-send-fill me-2"></i> Send Message</span>
+                      <span id="submitLoader" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                  </button>
+              </div>
+          </form>
+          
+          <script>
+              document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                  e.preventDefault(); // Prevent default form submission
+                  const form = e.target;
+                  const formData = new FormData(form);
+                  const submitButton = document.getElementById('submitButton');
+                  const submitText = document.getElementById('submitText');
+                  const submitLoader = document.getElementById('submitLoader');
+                  const formAlert = document.getElementById('formAlert');
+          
+                  // Show loader and disable button
+                  submitText.style.display = 'none';
+                  submitLoader.classList.remove('d-none');
+                  submitButton.disabled = true;
+          
+                  try {
+                      const response = await fetch(form.action, {
+                          method: 'POST',
+                          body: new URLSearchParams(formData),
+                      });
+                      const result = await response.json();
+          
+                      // Display success or error message
+                      formAlert.style.display = 'block';
+                      formAlert.className = result.success ? 'alert alert-success' : 'alert alert-danger';
+                      formAlert.innerText = result.message;
+          
+                      if (result.success) form.reset(); // Clear form on success
+                  } catch (error) {
+                      formAlert.style.display = 'block';
+                      formAlert.className = 'alert alert-danger';
+                      formAlert.innerText = 'An error occurred. Please try again.';
+                  } finally {
+                      // Hide loader and enable button
+                      submitText.style.display = 'inline';
+                      submitLoader.classList.add('d-none');
+                      submitButton.disabled = false;
+                  }
+              });
+          </script>
+          
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- Our Partners Section -->
+ 
+<div class="py-5 bg-light" id="partners">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Partners</h2>
+    <div id="partnersCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- First Row of Logos -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-around align-items-center">
+            <img src="/images/google.png" alt="Google Logo" class="img-fluid" style="max-height: 100px;">
+            <img src="/images/microsoft.png" alt="Microsoft Logo" class="img-fluid" style="max-height: 100px;">
+            <img src="/images/aws.png" alt="AWS Logo" class="img-fluid" style="max-height: 100px;">
+            <img src="/images/ibm.png" alt="IBM Logo" class="img-fluid" style="max-height: 100px;">
+          </div>
+        </div>
+        <!-- Second Row of Logos -->
+        <!-- <div class="carousel-item">
+          <div class="d-flex justify-content-around align-items-center">
+            <img src="/images/salesforce.png" alt="Salesforce Logo" class="img-fluid" style="max-height: 100px;">
+            <img src="/images/cisco.png" alt="Cisco Logo" class="img-fluid" style="max-height: 100px;">
+            <img src="/images/intel.png" alt="Intel Logo" class="img-fluid" style="max-height: 100px;">
+            <img src="/images/adobe.png" alt="Adobe Logo" class="img-fluid" style="max-height: 100px;">
+          </div>
+        </div> -->
+      </div>
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#partnersCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#partnersCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="py-3" >
+    <div class="container text-center">
+      <p>&copy; 2024 PICASF. All Rights Reserved.</p>
+    </div>
+    <!-- Contact info in footer -->
+    <div class=" container text-center text-white">
+        <p><i class="bi bi-telephone"></i> +250786554365 | <i class="bi bi-envelope"></i> <a href="mailto:admin@picasf.com" class="text-white">admin@picasf.com</a></p>
+        <p><a href="/cookie-policy" class="text-white">Cookie Policy</a></p>
+      </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none;">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="m-0" style="font-size: 1rem;">
+          We use cookies to improve your experience on our site. By accepting, you agree to our <a href="/cookie-policy" class="text-white">cookie policy</a>.
+        </p>
+        <div>
+          <button id="accept-cookies" class="btn btn-success btn-sm">Accept</button>
+          <button id="reject-cookies" class="btn btn-danger btn-sm">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Check if the user has already accepted/rejected cookies
+      if (!localStorage.getItem('cookies-accepted')) {
+        document.getElementById('cookie-consent-banner').style.display = 'block';
+      }
+  
+      // Accept cookies logic
+      document.getElementById('accept-cookies').addEventListener('click', function() {
+        // Store consent in localStorage
+        localStorage.setItem('cookies-accepted', 'true');
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+        // Optionally, set cookies here for tracking, analytics, etc.
+      });
+  
+      // Reject cookies logic
+      document.getElementById('reject-cookies').addEventListener('click', function() {
+        // Store rejection in localStorage
+        localStorage.setItem('cookies-accepted', 'false');
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+        // Optionally, disable cookies or do not set any non-essential cookies
+      });
+    });
+  </script>
+  
+  
+
 </body>
 </html>
