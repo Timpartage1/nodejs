@@ -1,47 +1,47 @@
-const express = require('express')
+const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
-const ejs=require('ejs')
+const ejs = require('ejs');
 const path = require('path');
-const axios = require('axios'); // For making HTTP requests to Arduino
+const axios = require('axios');
+const mongoose = require('mongoose'); // typo fixed (was 'moongoose')
 const bodyParser = require('body-parser');
 
+// Parse JSON BEFORE routes
+app.use(express.json());
+app.use(bodyParser.json());
 
-//rendering views 
+// Setup EJS views
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }));
 
-//db
-const moongoose = require('mongoose');
-const dbUri = "mongodb+srv://root:8466%40tim@timongo.ydcds.mongodb.net/" +
-    "?retryWrites=true&w=majority&appName=supermarket";
+// MongoDB connection
+const dbUri = "mongodb+srv://root:8466%40tim@timongo.ydcds.mongodb.net/?retryWrites=true&w=majority&appName=supermarket";
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("Database connected successfully");
+    })
+    .catch((err) => {
+        console.error("Database connection error:", err);
+    });
 
-// //149.82.54.21/32,15.114.158.56
-// moongoose.connect(dbUri, { useNewUrlParser: 1true, useUnifiedTopology: true })
-//     .then(() => {
-//         console.log("Database connected succesfully");
-       
-//     }).catch((err) => {
-//         console.log(err);
-//     });
+// Start the server
+app.listen(8080, () => {
+    console.log('Server running on http://localhost:8080');
+});
 
-    app.listen(8080);
-
-
+// Home page
 app.get('/', (req, res) => {
     res.render('index');
 });
 
+// Other page
 app.get('/josephcuma', (req, res) => {
     res.render('cuma');
 });
 
-
-
-
-
-
+// Contact form
 app.post('/contact', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
@@ -56,7 +56,6 @@ app.post('/contact', async (req, res) => {
     });
 
     try {
-        // Send email to admin
         await transporter.sendMail({
             from: '"PiCASF Contact Form" <admin@picasf.com>',
             to: 'admin@picasf.com',
@@ -66,10 +65,8 @@ app.post('/contact', async (req, res) => {
 
         console.log('Email sent to admin successfully.');
 
-        // Use EJS to render HTML email content
         const emailHtml = await ejs.renderFile(path.join(__dirname, 'views/email-template.ejs'), { name, message });
 
-        // Send feedback email to customer
         await transporter.sendMail({
             from: '"PiCASF" <admin@picasf.com>',
             to: email,
@@ -81,35 +78,22 @@ app.post('/contact', async (req, res) => {
         res.status(200).json({ success: true, message: 'Email sent successfully!' });
     } catch (error) {
         console.error('Error sending emails:', error.message);
-        console.error(error.stack);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to send emails. Please try again later.',
-            error: error.message,
-        });
+        res.status(500).json({ success: false, message: 'Failed to send emails.', error: error.message });
     }
 });
 
-
-
-
-
-
-app.get('/cookie-policy',(req, res) => {
+// Cookie policy page
+app.get('/cookie-policy', (req, res) => {
     res.render('cookie-policy');
-})
+});
 
+// In-memory storage for payment statuses
+const paymentStatuses = {}; // { orderId: { status: 'ACCEPTED' or 'REJECTED', reason: 'xxx' } }
 
-app.use(express.json());
-app.use(bodyParser.json());
-
-// Store payment statuses here temporarily
-const paymentStatuses = {};  // { orderId: {status: 'ACCEPTED' or 'REJECTED', reason: 'xxx'} }
-
+// Pawapay will call this after payment
 app.post('/momocallback', async (req, res) => {
     const { depositId, status, rejectionReason, metadata } = req.body;
 
-    // Extract orderId from metadata
     const orderIdMeta = metadata.find(m => m.fieldName === 'orderId');
     const orderId = orderIdMeta ? orderIdMeta.fieldValue : null;
 
@@ -121,11 +105,11 @@ app.post('/momocallback', async (req, res) => {
     if (status === 'ACCEPTED') {
         paymentStatuses[orderId] = { status: 'ACCEPTED' };
         try {
-            // Call Arduino ONLY if accepted
+            // Trigger Arduino when payment accepted
             await axios.get('https://f5ea-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on');
             console.log('Arduino turned ON for order:', orderId);
         } catch (error) {
-            console.error('Failed to trigger Arduino:', error);
+            console.error('Failed to trigger Arduino:', error.message);
         }
     } else if (status === 'REJECTED') {
         paymentStatuses[orderId] = { status: 'REJECTED', reason: rejectionReason };
@@ -134,7 +118,7 @@ app.post('/momocallback', async (req, res) => {
     res.status(200).send('Callback received');
 });
 
-// Endpoint Flutter will call to check payment status
+// Flutter app calls this to check if payment accepted
 app.get('/check-payment-status', (req, res) => {
     const orderId = req.query.orderId;
     if (!orderId || !paymentStatuses[orderId]) {
