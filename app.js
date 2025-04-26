@@ -3,6 +3,10 @@ const app = express();
 const nodemailer = require('nodemailer');
 const ejs=require('ejs')
 const path = require('path');
+const axios = require('axios'); // For making HTTP requests to Arduino
+const bodyParser = require('body-parser');
+
+
 //rendering views 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -96,34 +100,32 @@ app.get('/cookie-policy',(req, res) => {
 })
 
 
-app.post('/momocallback', (req, res) => {
-    const { status, depositId, created, rejectionReason } = req.body;
+app.use(express.json());
+app.use(bodyParser.json());
 
-    let responseMessage = '';
+app.post('/momocallback', async (req, res) => {
+  console.log('Received callback:', req.body);
 
-    switch (status) {
-        case 'ACCEPTED':
-            responseMessage = 'You have paid successfully. Thank you!';
-            break;
-        case 'REJECTED':
-            responseMessage = `Your payment was rejected. Reason: ${rejectionReason || 'Unknown reason'}. Please ensure you have enough balance.`;
-            break;
-        case 'DUPLICATE_IGNORED':
-            responseMessage = 'Please do *182*7*1# and proceed to pay. It\'s still a pending payment. Or restart your order from scratch.';
-            break;
-        default:
-            responseMessage = 'Payment status unknown. Please contact support.';
+  const { status, depositId, rejectionReason } = req.body;
+
+  if (status === 'ACCEPTED') {
+    console.log(`Payment ${depositId} accepted! Turning on Arduino...`);
+
+    try {
+      await axios.get('https://3179-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on'); // Change to your Arduino IP
+      console.log('Arduino light turned ON.');
+    } catch (error) {
+      console.error('Error sending command to Arduino:', error.message);
     }
+  } else if (status === 'REJECTED') {
+    console.log(`Payment ${depositId} rejected: ${rejectionReason}`);
+  } else if (status === 'DUPLICATE_IGNORED') {
+    console.log(`Payment ${depositId} ignored as duplicate.`);
+  }
 
-    // Log the full payload for debugging
-    console.log("Callback received:", req.body);
-
-    // Return plain text response
-    res.setHeader('Content-Type', 'text/plain');
-    res.status(200).send(responseMessage);
+  // Always send back 200 OK
+  res.status(200).send('Callback received.');
 });
-
-
 app.use((req, res) => {
 
     res.send('Not found')
