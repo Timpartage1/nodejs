@@ -199,11 +199,12 @@ const paymentStatuses = {}; // { orderId: { status: 'ACCEPTED' or 'REJECTED', re
 
 app.get('/momocallback', async (req, res) => {
     console.log('Callback received:', req.body);
-    res.header('Access-Control-Allow-Origin', '*');
-     ret= res.body;
-     await ret;
-     return ret;
-    const { depositId, status, rejectionReason, metadata } = req.body;
+   
+     return res.header('Access-Control-Allow-Origin', '*').status(200).json({
+        success: true,
+        status: status,
+        message: paymentStatuses[orderId].message
+    });
 
     // Extract the orderId from metadata
     const orderIdMeta = metadata.find(m => m.fieldName === 'orderId');
