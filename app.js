@@ -92,38 +92,51 @@ const paymentStatuses = {}; // { orderId: { status: 'ACCEPTED' or 'REJECTED', re
 
 // Pawapay will call this after payment
 app.post('/momocallback', async (req, res) => {
-    console.log('Callback received:', req.body)
+    console.log('Callback received:', req.body);
     const { depositId, status, rejectionReason, metadata } = req.body;
 
+    // Extract the orderId from metadata
     const orderIdMeta = metadata.find(m => m.fieldName === 'orderId');
     const orderId = orderIdMeta ? orderIdMeta.fieldValue : null;
 
     if (!orderId) {
         console.error('Missing orderId in callback');
-        return res.status(400).send('Missing orderId');
+        return res.status(400).json({ success: false, message: 'Missing orderId in callback' });
     }
 
-    if (status === 'ACCEPTED') {
-        paymentStatuses[orderId] = { status: 'ACCEPTED' };
+    // Handle payment status
+    if (status === 'COMPLETED') {
+        paymentStatuses[orderId] = { status: 'COMPLETED', depositId, message: 'Payment completed successfully' };
+
         try {
             // Trigger Arduino when payment accepted
             await axios.get('https://f5ea-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on');
             console.log('Arduino turned ON for order:', orderId);
         } catch (error) {
             console.error('Failed to trigger Arduino:', error.message);
+            paymentStatuses[orderId].message = 'Payment completed, but failed to trigger Arduino';
         }
     } else if (status === 'REJECTED') {
-        paymentStatuses[orderId] = { status: 'REJECTED', reason: rejectionReason };
+        paymentStatuses[orderId] = { status: 'REJECTED', rejectionReason, message: rejectionReason || 'Payment rejected' };
+    } else {
+        paymentStatuses[orderId] = { status, message: 'Payment status is not completed or rejected' };
     }
 
-    res.status(200).send('Callback received');
+    // Respond to pawaPay callback with the appropriate status
+    res.status(200).json({
+        success: true,
+        status: status,
+        message: paymentStatuses[orderId].message
+    });
+
+    console.log(`Payment status for order ${orderId}:`, paymentStatuses[orderId]);
 });
 
 // Flutter app calls this to check if payment accepted
 app.get('/check-payment-status', (req, res) => {
     const orderId = req.query.orderId;
     if (!orderId || !paymentStatuses[orderId]) {
-        return res.status(404).send('Not found');
+        return res.status(404).json({ success: false, message: 'Order not found or payment not completed yet' });
     }
-    res.json(paymentStatuses[orderId]);
+    res.json({ success: true, orderId, status: paymentStatuses[orderId].status, message: paymentStatuses[orderId].message });
 });
