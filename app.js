@@ -200,6 +200,7 @@ const paymentStatuses = {}; // { orderId: { status: 'ACCEPTED' or 'REJECTED', re
 app.post('/momocallback', async (req, res) => {
     console.log('Callback received:', req.body);
     res.header('Access-Control-Allow-Origin', '*');
+    return res.body;
     const { depositId, status, rejectionReason, metadata } = req.body;
 
     // Extract the orderId from metadata
@@ -238,6 +239,7 @@ app.post('/momocallback', async (req, res) => {
     });
 
     console.log(`Payment status for order ${orderId}:`, paymentStatuses[orderId]);
+
 });
 
 // Flutter app calls this to check if payment accepted
