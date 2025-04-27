@@ -33,6 +33,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 app.get('/', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
     res.render('index');
 });
 
@@ -198,6 +199,7 @@ const paymentStatuses = {}; // { orderId: { status: 'ACCEPTED' or 'REJECTED', re
 
 app.post('/momocallback', async (req, res) => {
     console.log('Callback received:', req.body);
+    res.header('Access-Control-Allow-Origin', '*');
     const { depositId, status, rejectionReason, metadata } = req.body;
 
     // Extract the orderId from metadata
@@ -240,6 +242,7 @@ app.post('/momocallback', async (req, res) => {
 
 // Flutter app calls this to check if payment accepted
 app.get('/check-payment-status', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
     const orderId = req.query.orderId;
     if (!orderId || !paymentStatuses[orderId]) {
         return res.status(404).json({ success: false, message: 'Order not found or payment not completed yet' });
