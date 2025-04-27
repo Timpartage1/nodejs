@@ -197,8 +197,9 @@ sendEmail(customerDetails);
 // In-memory storage for payment statuses
 const paymentStatuses = {}; // { orderId: { status: 'ACCEPTED' or 'REJECTED', reason: 'xxx' } }
 
-app.get('/momocallback', async (req, res) => {
+app.post('/momocallback', async (req, res) => {
     console.log('Callback received:', req.body);
+    return res.header('Access-Control-Allow-Origin', '*').status(200).json();
    
      return res.header('Access-Control-Allow-Origin', '*').status(200).json({
         success: true,
