@@ -28,7 +28,7 @@ app.post('/momocallback', async (req, res) => {
         paymentStatuses[orderId] = { status: 'COMPLETED', depositId, message: 'Payment completed successfully' };
 
         // Trigger Arduino asynchronously without blocking the response
-        axios.get('https://f5ea-2c0f-eb68-674-4800-cc7b-67b5-e6f8-26bd.ngrok-free.app/turn-on')
+        axios.get('https://7997-2c0f-eb68-674-4800-89c0-c9c8-27a4-2d26.ngrok-free.app/turn-on')
             .then(() => {
                 console.log('Arduino turned ON for order:', orderId);
             })
